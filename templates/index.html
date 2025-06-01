@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code Converter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e2f;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      background: #2c2c44;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+      width: 100%;
+      max-width: 700px;
+      padding: 30px 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2.2rem;
+      color: #a8d0e6;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+      color: #c7d0e3;
+    }
+
+    textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3b3b5c;
+      color: #e0e0e0;
+      font-size: 1rem;
+      font-family: Consolas, monospace;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #7f94b0;
+      color: #1e1e2f;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a8c0ff;
+    }
+
+    .output-container {
+      background-color: #121224;
+      border-radius: 10px;
+      padding: 20px;
+      font-family: Consolas, monospace;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      min-height: 150px;
+      color: #d0d0f0;
+      box-shadow: inset 0 0 10px #3a3a6e;
+      margin-top: 20px;
+    }
+
+    .copy-button {
+      margin-top: 10px;
+      background-color: #5aa9e6;
+    }
+
+    .copy-button:hover {
+      background-color: #72c0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Code Converter</h1>
+    <form method="POST" action="/">
+      <label for="source_language">Source Language</label>
+      <select name="source_language" id="source_language" required>
+        <option value="" disabled selected>Select source language</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+        <option value="csharp">C#</option>
+      </select>
+
+      <label for="target_language">Target Language</label>
+      <select name="target_language" id="target_language" required>
+        <option value="" disabled selected>Select target language</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+        <option value="csharp">C#</option>
+      </select>
+
+      <label for="source_code">Enter Your Code</label>
+      <textarea name="source_code" id="source_code" rows="10" placeholder="Write your code here..." required></textarea>
+
+      <button type="submit">Convert Code</button>
+    </form>
+
+    {% if converted_code %}
+      <div class="output-container" id="converted_code">{{ converted_code }}</div>
+      <button class="copy-button" onclick="copyCode()">Copy Converted Code</button>
+    {% endif %}
+  </div>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById("converted_code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied!");
+      });
+    }
+  </script>
+</body>
+</html>
