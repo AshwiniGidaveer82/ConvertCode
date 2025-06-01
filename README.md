@@ -18,7 +18,7 @@ ConvertCode is a project designed to [brief description of what the project does
 - Put your screenshot image (e.g., `output.png`) inside your project folder.
   
 ![Capture1](https://github.com/user-attachments/assets/db8ea0a6-6ca2-4909-98ec-fcda96a71929)
-- ![Capture2](https://github.com/user-attachments/assets/8409d7cb-8fef-457f-8dc3-87ed9af78aaa)
+![Capture2](https://github.com/user-attachments/assets/8409d7cb-8fef-457f-8dc3-87ed9af78aaa)
 
 
 ## Installation
